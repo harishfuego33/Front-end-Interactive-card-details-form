@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+:root {
+  --radient1: hsl(249, 99%, 64%);
+  --redient2: hsl(278, 94%, 30%);
+  --Red: hsl(0, 100%, 66%); /* ERROR*/
+  --White: hsl(0, 0%, 100%);
+  --LightrGayishViolet: hsl(270, 3%, 87%);
+  --DarkGrayishViolet: hsl(279, 6%, 55%);
+  --VeryGarkViolet: hsl(278, 68%, 11%);
+
+  /* font family */
+  --ff-space: "Space Grotesk", sans-serif;
+}
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body,
+#root {
+  width: 100%;
+  min-height: 100vh;
+  font-family: var(--ff-space);
+  background-image: url(../public/images/bg-main-desktop.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card__main {
+  display: flex;
+  align-items: center;
+  gap: 6rem;
+}
+.card__section--1 {
+  width: 50rem;
+  height: 47rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.card__img--1 {
+  width: 80%;
+  height: 45%;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 2.8rem;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+.card__number {
+  font-size: 3rem;
+  color: white;
+  margin-top: 2rem;
+  letter-spacing: 1px;
+}
+.card__holder {
+  display: inline-flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 1.4rem;
+}
+.card__img--2 {
+  /* background-size: contain;
+  background-repeat: no-repeat; */
+  width: 80%;
+  height: 45%;
+  align-self: end;
+  position: relative;
+  z-index: 10;
+}
+.card__img-bg-1 {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
+  background-size: cover;
+  /* border-radius: 10%; */
+}
+.card__back--cvc {
+  position: absolute;
+  right: 15%;
+  top: 45%;
+  bottom: 55%;
+  font-size: 1.4rem;
+  color: white;
+}
+.card__section--2 {
+  margin: 8rem 0;
+  width: 40%;
+  padding: 3rem;
+}
+.card__form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+::-webkit-input-placeholder {
+  font-family: var(--ff-space);
+}
+.cardnumber-inputlabel,
+.date-inputlabel,
+.cvv-inputlabel {
+  display: block;
+  margin-top: 0.5rem;
+}
+.card__date-cvv {
+  display: flex;
+  justify-content: space-between;
+}
+.card__input--date {
+  width: 40%;
+  height: 4rem;
+  padding: 1rem;
+  margin-right: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid gray;
+  outline: none;
+}
+.card__form-input {
+  height: 4rem;
+  padding: 1rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid gray;
+  outline: none;
+}
+.card__form--placeholdername {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: black;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.card__input-cvv {
+  height: 4rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid gray;
+  outline: none;
+}
+input::-webkit-inner-spin-button {
+  appearance: none;
+}
+.card__date {
+  width: 40%;
+  border-radius: 0.5rem;
+}
+.card__cvv {
+  width: 60%;
+}
+.card__btn {
+  height: 4rem;
+  background-color: var(--VeryGarkViolet);
+  color: white;
+  border-radius: 0.5rem;
+  border: 1px solid gray;
+}
+
+.card__input--date:focus:invalid,
+.card__input-cvv:focus:invalid,
+.card__form-input:focus:invalid {
+  outline: none;
+  border: 1px solid red;
+}
+.cvv-inputlabel,
+.date-inputlabel,
+.cardnumber-inputlabel {
+  color: red;
+  transform: translateY(-4px);
+  opacity: 0;
+  transition: all 0.3s;
+}
+.card__input--date:focus + .date-inputlabel,
+.card__input-cvv:focus + .cvv-inputlabel {
+  transform: translateY(0px);
+  opacity: 1;
+}
+.card__input-cvv:not(:placeholder-shown) + .cvv-inputlabel {
+  transform: translateY(-4px);
+  opacity: 0;
+}
+.card__input--date:not(:placeholder-shown) + .date-inputlabel {
+  transform: translateY(-4px);
+  opacity: 0;
+}
+.alert + .cardnumber-inputlabel {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+@media (max-width: 962px) {
+  .card__section--1 {
+    width: 40rem;
+  }
+  .card__number {
+    font-size: 2rem;
+  }
+}
