@@ -10,6 +10,7 @@
 
   /* font family */
   --ff-space: "Space Grotesk", sans-serif;
+  --ff-size-3: 3rem;
 }
 *,
 *::after,
@@ -28,7 +29,7 @@ body,
   font-family: var(--ff-space);
   background-image: url(../public/images/bg-main-desktop.png);
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 33% 100%;
   background-position: left center;
   display: flex;
   align-items: center;
@@ -37,10 +38,13 @@ body,
 .card__main {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6rem;
+  width: 93rem;
+  min-height: 100vh;
 }
 .card__section--1 {
-  width: 50rem;
+  width: 60%;
   height: 47rem;
   display: flex;
   flex-direction: column;
@@ -48,17 +52,20 @@ body,
 }
 .card__img--1 {
   width: 80%;
-  height: 45%;
+  height: 47%;
+  min-width: 26.1rem;
   align-self: start;
   display: flex;
   flex-direction: column;
-  gap: 2.8rem;
-  position: relative;
-  z-index: 10;
+  justify-content: space-evenly;
   overflow: hidden;
+  background-image: url(../public/images/bg-card-front.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 2rem;
 }
 .card__number {
-  font-size: 3rem;
+  font-size: var(--ff-size-3);
   color: white;
   margin-top: 2rem;
   letter-spacing: 1px;
@@ -69,23 +76,25 @@ body,
   color: white;
   font-size: 1.4rem;
 }
+.card__log--box {
+  width: 20%;
+}
+.card__log {
+  width: 100%;
+  /* height: 100%; */
+  object-fit: cover;
+}
 .card__img--2 {
-  /* background-size: contain;
-  background-repeat: no-repeat; */
   width: 80%;
-  height: 45%;
+  height: 47%;
+  min-width: 26.1rem;
   align-self: end;
   position: relative;
   z-index: 10;
-}
-.card__img-bg-1 {
-  position: absolute;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  /* object-fit: cover; */
-  background-size: cover;
-  /* border-radius: 10%; */
+  background-image: url(../public/images/bg-card-back.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  overflow: hidden;
 }
 .card__back--cvc {
   position: absolute;
@@ -97,13 +106,14 @@ body,
 }
 .card__section--2 {
   margin: 8rem 0;
-  width: 40%;
+  width: 45%;
+
   padding: 3rem;
 }
 .card__form {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 ::-webkit-input-placeholder {
   font-family: var(--ff-space);
@@ -117,15 +127,28 @@ body,
 .card__date-cvv {
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  /* flex-wrap: wrap; */
 }
-.card__input--date {
-  width: 40%;
+.card__holder--name {
+  text-transform: uppercase;
+}
+.card__form-exp--date {
+  min-width: min-content;
+  position: relative;
+}
+.card__input--date-1,
+.card__input--date-2 {
+  width: 42%;
   height: 4rem;
   padding: 1rem;
   margin-right: 1rem;
   border-radius: 0.5rem;
   border: 1px solid gray;
   outline: none;
+}
+.card__form--name {
+  height: 7rem;
 }
 .card__form-input {
   height: 4rem;
@@ -137,12 +160,13 @@ body,
 }
 .card__form--placeholdername {
   margin-bottom: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: black;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 1px;
 }
 .card__input-cvv {
+  width: 100%;
   height: 4rem;
   padding: 1rem;
   border-radius: 0.5rem;
@@ -153,57 +177,128 @@ input::-webkit-inner-spin-button {
   appearance: none;
 }
 .card__date {
-  width: 40%;
+  min-width: 50%;
   border-radius: 0.5rem;
 }
 .card__cvv {
-  width: 60%;
+  min-width: 50%;
 }
 .card__btn {
+  width: 100%;
   height: 4rem;
   background-color: var(--VeryGarkViolet);
   color: white;
   border-radius: 0.5rem;
   border: 1px solid gray;
 }
-
-.card__input--date:focus:invalid,
+.date-inputlabel-1,
+.date-inputlabel-2 {
+  position: absolute;
+  left: 0;
+  bottom: -1.6rem;
+}
+.card__input--date-1:focus:invalid,
+.card__input--date-2:focus:invalid,
 .card__input-cvv:focus:invalid,
 .card__form-input:focus:invalid {
   outline: none;
   border: 1px solid red;
 }
 .cvv-inputlabel,
-.date-inputlabel,
+.date-inputlabel-1,
+.date-inputlabel-2,
 .cardnumber-inputlabel {
   color: red;
-  transform: translateY(-4px);
+  transform: translateY(-1rem);
   opacity: 0;
   transition: all 0.3s;
 }
-.card__input--date:focus + .date-inputlabel,
+.card__input--date-1:focus ~ .date-inputlabel-1,
+.card__input--date-2:focus ~ .date-inputlabel-2,
 .card__input-cvv:focus + .cvv-inputlabel {
   transform: translateY(0px);
   opacity: 1;
 }
 .card__input-cvv:not(:placeholder-shown) + .cvv-inputlabel {
-  transform: translateY(-4px);
+  transform: translateY(-1rem);
   opacity: 0;
 }
-.card__input--date:not(:placeholder-shown) + .date-inputlabel {
-  transform: translateY(-4px);
+.card__input--date-1:not(:placeholder-shown) ~ .date-inputlabel-1,
+.card__input--date-2:not(:placeholder-shown) ~ .date-inputlabel-2 {
+  transform: translateY(-1rem);
   opacity: 0;
 }
 .alert + .cardnumber-inputlabel {
   transform: translateY(0px);
   opacity: 1;
 }
-
-@media (max-width: 962px) {
-  .card__section--1 {
-    width: 40rem;
+.alert {
+  border: 1px solid red;
+}
+.hidden {
+  display: none !important;
+}
+.align-items-center {
+  align-items: center;
+}
+.thank__you {
+  text-transform: uppercase;
+  font-size: 2.4rem;
+  letter-spacing: 3px;
+}
+.acknowledgement {
+  font-size: 1.4rem;
+  color: var(--DarkGrayishViolet);
+}
+@media (max-width: 950px) {
+  :root {
+    --ff-size-3: 1.8em;
   }
-  .card__number {
-    font-size: 2rem;
+  .card__main {
+    gap: 0;
+  }
+}
+@media (max-width: 858px) {
+  body,
+  #root {
+    background-image: url(../public/images/bg-main-mobile.png);
+    background-size: 100% 30%;
+    background-position: top;
+  }
+  .card__main {
+    flex-direction: column;
+    margin-inline: 2rem;
+  }
+  .card__section--1 {
+    width: 60%;
+    min-width: 320px;
+    height: 31.2rem;
+    position: relative;
+    display: initial;
+  }
+  .card__img--1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    height: 63%;
+  }
+  .card__img--2 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 65%;
+  }
+  .card__section--2 {
+    margin-block: 0;
+    margin-top: 5rem;
+    padding: 1rem;
+    min-width: 320px;
+    width: auto;
+  }
+}
+@media (max-width: 632px) {
+  .card__section--1 {
+    height: 25rem;
   }
 }
